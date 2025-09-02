@@ -19,7 +19,7 @@ import random
 
 from app.config import settings
 from app.database import get_db
-from app.models.all_models import User
+from app.models.all_models import User, UserRole, UserRole
 
 # Initialize security
 security = HTTPBearer()
@@ -175,6 +175,26 @@ def require_roles(allowed_roles: list):
             )
         return current_user
     return role_checker
+
+def require_admin(current_user: User = Depends(get_current_user)) -> User:
+    """Require admin role."""
+    if current_user.role != UserRole.ADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Insufficient permissions"
+        )
+    return current_user
+
+def require_patient(current_user: User = Depends(get_current_user)) -> User:
+    """Require patient role."""
+    if current_user.role != UserRole.PATIENT:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Insufficient permissions"
+        )
+    return current_user
+
+
 
 # ================================
 # OTP GENERATION AND VALIDATION

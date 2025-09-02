@@ -12,6 +12,7 @@ def create_admin_user(email, password, first_name, last_name, phone, employee_id
     # Database connection (adjust connection string as needed)
     DATABASE_URL = settings.DATABASE_URL
     engine = create_engine(DATABASE_URL)
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 

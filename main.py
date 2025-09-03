@@ -4,6 +4,13 @@ from fastapi.responses import RedirectResponse
 from app.routes.auth.router import router as auth_router
 from app.routes.patients.router import router as patients_router
 from app.routes.staffs.router import router as staffs_router
+from app.routes.admin.router import router as admin_router
+from app.routes.admin.users import router as admin_users_router
+from app.routes.drivers.router import router as drivers_router
+from app.routes.ambulances.router import router as ambulances_router
+from app.routes.calenda.router import router as calendar_router
+ 
+
 
 app = FastAPI(title="Wezzie API", version="1.0.0")
 
@@ -18,6 +25,11 @@ api_v1_router = APIRouter(prefix="/api/v1")
 api_v1_router.include_router(auth_router)
 api_v1_router.include_router(patients_router)
 api_v1_router.include_router(staffs_router)
+api_v1_router.include_router(admin_router) 
+api_v1_router.include_router(admin_users_router)  
+api_v1_router.include_router(drivers_router) 
+api_v1_router.include_router(ambulances_router)
+api_v1_router.include_router(calendar_router)   
 
 app.include_router(api_v1_router)
 

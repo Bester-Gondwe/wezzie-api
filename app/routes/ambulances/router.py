@@ -41,7 +41,7 @@ def list_ambulances(
     status_filter: Optional[str] = Query(None),
     search: Optional[str] = Query(None),
     db: Session = Depends(get_db),
-    current_user: User = Security(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST]))
+    current_user: User = Security(Depends(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST])))
 ):
     """
     Get all ambulances with optional filtering and search (Admin/Receptionist only)
@@ -119,7 +119,7 @@ def list_ambulances(
 def get_ambulance(
     ambulance_id: UUID,
     db: Session = Depends(get_db),
-    current_user: User = Security(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST]))
+    current_user: User = Security(Depends(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST])))
 ):
     """
     Get a specific ambulance by ID (Admin/Receptionist only)
@@ -327,7 +327,7 @@ def update_ambulance_status(
     ambulance_id: UUID,
     status_data: dict,
     db: Session = Depends(get_db),
-    current_user: User = Security(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST]))
+    current_user: User = Security(Depends(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST])))
 ):
     """
     Update ambulance status (Admin/Receptionist only)
@@ -431,7 +431,7 @@ def delete_ambulance(
 def get_ambulance_bookings(
     ambulance_id: UUID,
     db: Session = Depends(get_db),
-    current_user: User = Security(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST]))
+    current_user: User = Security(Depends(require_roles([UserRole.ADMIN, UserRole.RECEPTIONIST])))
 ):
     """
     Get all bookings for a specific ambulance (Admin/Receptionist only)

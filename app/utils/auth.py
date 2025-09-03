@@ -194,6 +194,15 @@ def require_patient(current_user: User = Depends(get_current_user)) -> User:
         )
     return current_user
 
+def require_user(current_user: User = Depends(get_current_user)) -> User:
+    
+    if current_user.role != UserRole.USER:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Insufficient permissions"
+        )
+    return current_user
+
 
 
 # ================================
@@ -218,10 +227,10 @@ def send_email_otp(email: str, otp: str, first_name: str, template_type: str = "
     """Send OTP via email."""
     try:
         # Email configuration
-        smtp_server = settings.SMTP_SERVER
-        smtp_port = settings.SMTP_PORT
-        sender_email = settings.SMTP_USERNAME
-        sender_password = settings.SMTP_PASSWORD
+        smtp_server = ""
+        smtp_port = ""
+        sender_email = ""
+        sender_password = ""
         
         # Create message
         message = MIMEMultipart("alternative")
@@ -374,8 +383,8 @@ def send_sms_otp(phone: str, otp: str, template_type: str = "verification"):
     """Send OTP via SMS using a SMS gateway service."""
     try:
         # SMS API configuration (replace with your SMS provider)
-        sms_api_url = settings.SMS_API_URL
-        sms_api_key = settings.SMS_API_KEY
+        sms_api_url = ""
+        sms_api_key = ""
         
         # Format phone number for Malawi
         formatted_phone = format_malawi_phone(phone)

@@ -11,7 +11,7 @@ from app.models.all_models import (
     Department, PatientProfile, UserRole, AppointmentStatus,
     AmbulanceStatus, InquiryStatus
 )
-from app.utils.auth import get_current_user
+from app.utils import get_current_user
 
 router = APIRouter(prefix="/staff", tags=["staff"])
 

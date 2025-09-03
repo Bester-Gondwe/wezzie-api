@@ -25,7 +25,7 @@ from app.routes.auth.schemas import (
     RefreshTokenRequest,
     UserProfileResponse
 )
-from app.utils.auth import (
+from app.utils import (
     create_access_token,
     create_refresh_token,
     verify_token,

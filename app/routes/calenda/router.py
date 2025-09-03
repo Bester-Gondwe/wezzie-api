@@ -12,7 +12,11 @@ from app.models.all_models import (
     Appointment, User, Department, Service, StaffProfile, 
     PatientProfile, AppointmentStatus, Priority, UserRole
 )
+<<<<<<< HEAD
 from app.utils.auth import require_admin,get_current_user
+=======
+from app.utils import require_admin,get_current_user
+>>>>>>> 957e0fbb0a063511f499533feb2e0233a1918515
 from app.schemas.appointment import (
     AppointmentCreate, AppointmentUpdate, AppointmentResponse,
     AppointmentCalendarEvent

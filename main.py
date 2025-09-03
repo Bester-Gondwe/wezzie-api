@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from app.routes.auth.router import router as auth_router
 from app.routes.patients.router import router as patients_router
+from app.routes.staffs.router import router as staffs_router
 
 app = FastAPI(title="Wezzie API", version="1.0.0")
 
@@ -16,6 +17,7 @@ def read_root():
 api_v1_router = APIRouter(prefix="/api/v1")
 api_v1_router.include_router(auth_router)
 api_v1_router.include_router(patients_router)
+api_v1_router.include_router(staffs_router)
 
 app.include_router(api_v1_router)
 

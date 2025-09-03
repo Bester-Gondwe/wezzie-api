@@ -4,17 +4,17 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 from uuid import UUID
 from datetime import datetime
-from app.models.all_models import SystemSetting, UserRole, ActivityLog, Language
+from app.models.all_models import SystemSetting, UserRole, ActivityLog, Language,User
 from app.database import get_db
 from app.utils.auth import require_admin, get_current_user
-from app.schemas.user import User
+
 import pytz
 
-router = APIRouter(prefix="/api/settings", tags=["Settings"])
+router = APIRouter(prefix="/api/router/settings", tags=["Settings"])
 
 # Pydantic schemas
 class RolePermission(BaseModel):
-    role: str = Field(..., regex="^(admin|doctor|nurse|receptionist|ambulance_driver|patient)$")
+    role: str = Field(...)
     canManageUsers: bool
     canManageAmbulances: bool
     canManageSchedules: bool

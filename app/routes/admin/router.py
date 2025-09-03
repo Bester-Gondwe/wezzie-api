@@ -9,7 +9,7 @@ from app.database import get_db
 from app.models.all_models import (
     BLANTYRE_TZ, User, Appointment, Ambulance, Notification, AppointmentStatus, AmbulanceStatus, UserRole, NotificationType
 )
-from app.utils import require_admin
+from app.utils.auth import require_admin
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 

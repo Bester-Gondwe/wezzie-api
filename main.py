@@ -8,7 +8,8 @@ from app.routes.admin.router import router as admin_router
 from app.routes.admin.users import router as admin_users_router
 from app.routes.drivers.router import router as drivers_router
 from app.routes.ambulances.router import router as ambulances_router
-from app.routes.calenda.router import router as calenda_router  
+from app.routes.calenda.router import router as calenda_router 
+from app.routes.settings.router import router as settings_router
  
 
 
@@ -30,6 +31,7 @@ api_v1_router.include_router(admin_users_router)
 api_v1_router.include_router(drivers_router) 
 api_v1_router.include_router(ambulances_router)
 api_v1_router.include_router(calenda_router)
+api_v1_router.include_router(settings_router)
 
 app.include_router(api_v1_router)
 

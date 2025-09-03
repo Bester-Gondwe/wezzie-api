@@ -18,7 +18,7 @@ from app.routes.patients.patient_schemas import (
     AppointmentCreate, AppointmentUpdate,
     AmbulanceBookingCreate, AmbulanceBookingUpdate
 )
-from app.utils import get_current_user
+from app.utils.auth import get_current_user
 
 router = APIRouter(prefix="/patients", tags=["patients"])
 

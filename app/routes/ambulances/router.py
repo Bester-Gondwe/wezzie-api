@@ -9,7 +9,7 @@ from datetime import datetime
 
 from app.database import get_db
 from app.models.all_models import Ambulance, User, UserRole, AmbulanceBooking
-from app.utils import require_admin, require_roles, get_current_user
+from app.utils.auth import require_admin, require_roles, get_current_user
 
 # Create the router instance
 router = APIRouter(prefix="/ambulances", tags=["Ambulances"])

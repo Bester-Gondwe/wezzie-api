@@ -5,7 +5,6 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from typing import Optional
-import secrets
 import bcrypt
 import jwt
 from email_validator import validate_email, EmailNotValidError
@@ -25,7 +24,7 @@ from app.routes.auth.schemas import (
     RefreshTokenRequest,
     UserProfileResponse
 )
-from app.utils import (
+from app.utils.auth import (
     create_access_token,
     create_refresh_token,
     verify_token,
